@@ -1,10 +1,15 @@
-﻿namespace Web_API.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Web_API.Models
 {
     public class Products
     {
-        int product_id { get; set; }
-        string? product_name { get; set; }
-        string? product_description { get; set; }
-        decimal price { get; set; }
+        [Key]
+        public int product_id { get; set; }
+        public string? product_name { get; set; }
+        public string? product_description { get; set; }
+        public decimal price { get; set; }
+        public ICollection<Cart_Item>? cart_items { get; set; }
+        public ICollection<Wishlist_Item>? wishlist_items { get; set; }
     }
 }

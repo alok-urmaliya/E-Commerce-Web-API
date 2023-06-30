@@ -1,9 +1,14 @@
-﻿namespace Web_API.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Web_API.Models
 {
     public class Wishlist_Item
     {
-        public int cart_item_id { get; set; }
-        public int user_id { get; set; }
+        [Key]
+        public int wishlist_item_id { get; set; }
+        public required string customer_id { get; set; }
         public int product_id { get; set; }
+        public virtual Customer customer { get; set; }
+        public virtual Products product { get; set; }
     }
 }
