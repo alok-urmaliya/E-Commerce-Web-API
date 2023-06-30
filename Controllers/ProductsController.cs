@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
@@ -7,6 +8,7 @@ using Web_API.Models;
 
 namespace Web_API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]/[Action]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -35,7 +37,7 @@ namespace Web_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult<string> products([FromBody]ProductCreateDTO product)
+        public ActionResult<string> products([FromBody] ProductCreateDTO product)
         {
             Products _product = new Products
             {
